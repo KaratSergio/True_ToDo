@@ -1,0 +1,19 @@
+@TodoApi_HostAddress = http://localhost:5085
+
+GET {{TodoApi_HostAddress}}/tasks
+Accept: application/json
+
+###
+
+POST {{TodoApi_HostAddress}}/tasks
+Content-Type: application/json
+
+{
+  "text": "New Task"
+}
+
+###
+
+DELETE {{TodoApi_HostAddress}}/tasks/{id}
+Accept: application/json
+
