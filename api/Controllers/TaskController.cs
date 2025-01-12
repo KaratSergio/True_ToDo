@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using TodoApi.Models;
 
 namespace TodoApi.Controllers
 {
@@ -8,17 +9,17 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TaskController : ControllerBase
     {
-        private static List<Task> tasks = new List<Task>();
+        private static List<TodoTask> tasks = new List<TodoTask>();
         private static int id = 1;
 
         [HttpGet]
-        public ActionResult<IEnumerable<Task>> GetTasks()
+        public ActionResult<IEnumerable<TodoTask>> GetTasks()
         {
             return Ok(tasks);
         }
 
         [HttpPost]
-        public ActionResult<Task> CreateTask([FromBody] Task task)
+        public ActionResult<TodoTask> CreateTask([FromBody] TodoTask task)
         {
             if (string.IsNullOrWhiteSpace(task.Text))
             {
@@ -43,10 +44,11 @@ namespace TodoApi.Controllers
             return NoContent();
         }
 
-        public class Task
+         // for TEST only
+        public static void ClearTasks()
         {
-            public int Id { get; set; }
-            public required string Text { get; set; }
+            tasks.Clear();
+            id = 1; 
         }
     }
 }

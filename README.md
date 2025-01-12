@@ -20,6 +20,8 @@ dotnet restore
 dotnet build
 dotnet run
 
+dotnet test
+
 /Frontend
 cd client
 npm install
